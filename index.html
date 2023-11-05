@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CryptoView</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <header class="mainHeader">
+          <h1>CryptoView</h1>
+          <button class="searchBtn" id="searchButton">Search</button>
+    </header>
+    
+
+    <div class="bodyPart">
+        <h2>Chart View</h2>
+        <div class="rightPart">
+            <label for="cryptoSelect">Select Cryptocurrency:</label>
+            <select id="cryptoSelect"></select>
+            <button id="loadChartButton">Load Chart</button>
+        </div>
+    </div>
+
+    <div class="charts" id="charts">
+      <canvas id="priceChart"></canvas>
+      <!--Charts Will be displayed here-->
+    </div>
+
+    <div class="movingCoins">
+        <h2>Trending Coins</h2>
+      <div id="trendingCoinsContainer" class="trending-coins-container">
+        <!-- Trending coins will be displayed here -->
+      </div>
+    </div>
+
+    <footer class="footerMain">
+      <h2>Designed By: <strong>Satvik Shekhar</strong></h2>
+    </footer>
+
+    <script src="scriptHome.js"></script>
+  </body>
+</html>

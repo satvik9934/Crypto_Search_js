@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coin Details</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="containerSearchReturn">
+        <h1>Coin Details</h1>
+        <button class="searchReturn" id="searchReturn">Search</button>
+    </div>
+    <div id="coinDetails">
+        <!-- Details will be displayed here using JavaScript -->
+    </div>
+    <script>
+        
+        const urlParams = new URLSearchParams(window.location.search);
+        const coinid = urlParams.get('coinid');
+        const searchReturn = document.getElementById("searchReturn");
+        
+        fetch(`https://api.coingecko.com/api/v3/coins/${coinid}`)
+            .then((response) => {
+                return response.json();
+            })
+            .then((coinData) => {
+            
+                const coinDetails = document.getElementById('coinDetails');
+                coinDetails.innerHTML = `
+                    <div class="item123"><h2>Details for ${coinData.name} </h2>
+                         <img src="${coinData.image.thumb}" alt="${coinData.image.small}" />
+                         </div>
+                    <h4>Symbol: ${coinData.symbol}</h4>
+                    <div class="currentPrice">
+                    <h4>Current Price</h4>
+                    <h4>$ ${coinData.market_data.current_price.usd} </h4>
+                    <h4>₹ ${coinData.market_data.current_price.inr} </h4>
+                    <h4>€ ${coinData.market_data.current_price.eur} </h4></div>
+                    <h4>Description:</h4>
+                    <p>${coinData.description.en}</p>
+                `;
+            });
+
+        searchReturn.addEventListener('click',function(){
+            window.location.href = `searchPage.html?searchPage`;
+        });
+    </script>
+</body>
+</html>
